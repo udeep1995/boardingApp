@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ErrorComponent } from "./shared/components/error/error.component";
 import { StudentListComponent } from "./student/student-list/student-list.component";
+import { OnBoardFormComponent } from "./on-board/on-board-form/on-board-form.component";
+import { AuthGuardService } from "./shared/services/auth/auth-guard.service";
 const routes: Routes = [
   {
     path: "",
@@ -12,8 +14,9 @@ const routes: Routes = [
     loadChildren: "./student/student.module#StudentModule"
   },
   {
-    path: "onboard",
-    loadChildren: "./on-board/on-board.module#OnBoardModule"
+    path: "onboard/form",
+    component: OnBoardFormComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "**",
