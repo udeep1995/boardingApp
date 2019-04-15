@@ -9,10 +9,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
   declarations: [OnBoardFormComponent],
   imports: [
     CommonModule,
-    OnBoardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OnBoardRoutingModule
   ]
 })
 export class OnBoardModule {}

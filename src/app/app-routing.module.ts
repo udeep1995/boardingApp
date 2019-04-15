@@ -8,12 +8,12 @@ const routes: Routes = [
     loadChildren: "./authentication/authentication.module#AuthenticationModule"
   },
   {
-    path: "onboard",
-    loadChildren: "./on-board/on-board.module#OnBoardModule"
-  },
-  {
     path: "student",
     loadChildren: "./student/student.module#StudentModule"
+  },
+  {
+    path: "onboard",
+    loadChildren: "./on-board/on-board.module#OnBoardModule"
   },
   {
     path: "**",

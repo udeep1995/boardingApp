@@ -17,10 +17,10 @@ import { StudentModule } from "./student/student.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
     OnBoardModule,
-    StudentModule
+    StudentModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

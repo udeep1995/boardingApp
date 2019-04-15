@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
   ];
   ngOnInit() {
     if (this.auth.isAuthenticated()) {
-      this.router.navigate(["student"]);
+      this.router.navigate(["onboard"]);
     }
   }
   onSubmit() {
