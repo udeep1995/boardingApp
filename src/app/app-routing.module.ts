@@ -10,11 +10,11 @@ const routes: Routes = [
   },
   {
     path: "student",
-    loadChildren: () => StudentModule
+    loadChildren: "./student/student.module#StudentModule"
   },
   {
     path: "onboard",
-    loadChildren: () => OnBoardModule
+    loadChildren: "./on-board/on-board.module#OnBoardModule"
   },
   {
     path: "**",
