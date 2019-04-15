@@ -1,0 +1,47 @@
+<div
+  #card
+  id="{{ id }}"
+  class=" col-md-6"
+  [ngClass]="
+    category.toLowerCase() === 'domestic' ? 'domestic' : 'international'
+  "
+>
+  <div class="card-body">
+    <div class="card-title">
+      {{ name }}
+    </div>
+    <div class="card-subtitle mb-2 text-muted">
+      {{ category }}
+    </div>
+    <div class="card-link">
+      <a [routerLink]="['/onboard/edit', id]" class="btn btn-success">Edit</a>
+      <a [routerLink]="['/onboard/view', id]" class="btn btn-primary">View</a>
+      <a class="btn btn-danger" (click)="toggleModal()">Delete</a>
+    </div>
+  </div>
+</div>
+
+<div
+  id="deleteModal"
+  class="modal"
+  [ngClass]="isModalOpen ? 'modal-active' : 'modal'"
+>
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal()">&times;</span>
+    <p>Are you sure you want to delete ?</p>
+    <button
+      type="button"
+      (click)="deleteCard(card.id)"
+      class="btn btn-primary btn-mar"
+    >
+      Yes
+    </button>
+    <button
+      type="button"
+      (click)="toggleModal()"
+      class="btn btn-secondary btn-mar"
+    >
+      No
+    </button>
+  </div>
+</div>

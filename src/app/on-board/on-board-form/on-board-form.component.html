@@ -1,0 +1,134 @@
+<div class="container">
+  <form [formGroup]="onBoardForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="name" class="col-md-2">
+        Name
+      </label>
+      <input
+        type="text"
+        class="col-md-4"
+        formControlName="name"
+        placeholder="Name"
+      />
+      <span
+        class="alert alert-danger"
+        *ngIf="
+          onBoardForm.get('name').hasError('required') &&
+          onBoardForm.get('name').touched
+        "
+      >
+        Name field is required
+      </span>
+      <span
+        class="alert alert-danger"
+        *ngIf="
+          onBoardForm.get('name').hasError('minlength') &&
+          onBoardForm.get('name').touched
+        "
+      >
+        Minimun length required is =
+        {{ onBoardForm.get("name").errors.minlength.requiredLength }}
+      </span>
+    </div>
+
+    <div class="form-group row">
+      <label for="category" class="col-md-2">
+        Category
+      </label>
+      <select id="category" formControlName="category">
+        <option *ngFor="let c of categories" [ngValue]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div formGroupName="docs" class="form-group row">
+      <div class="col-md-12" for="docs">
+        Documents
+      </div>
+      <div id="docs" class="col-md-12" *ngFor="let doc of documents">
+        <span class="col-sm-2"
+          >{{ doc.docName }}
+          <span *ngIf="doc.isMandatory">*</span>
+        </span>
+        <input
+          [required]="doc.isMandatory"
+          class="checkbox col-sm-1"
+          type="checkbox"
+          formControlName="{{ doc.docName }}"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="dob" class="col-md-2">
+        Dob
+      </label>
+      <input type="date" class="col-md-4" formControlName="dob" />
+    </div>
+    <div class="form-group row">
+      <label for="fatherName" class="col-md-2">
+        Father's Name
+      </label>
+      <input
+        type="text"
+        class="col-md-4"
+        formControlName="fatherName"
+        placeholder="Father name"
+      />
+      <span
+        class="alert alert-danger"
+        *ngIf="
+          onBoardForm.get('fatherName').hasError('required') &&
+          onBoardForm.get('fatherName').touched
+        "
+      >
+        Father name field is required
+      </span>
+    </div>
+    <div class="form-group row">
+      <label for="motherName" class="col-md-2">
+        Mother's Name
+      </label>
+      <input
+        type="text"
+        class="col-md-4"
+        formControlName="motherName"
+        placeholder="Mother name"
+      />
+      <span
+        class="alert alert-danger"
+        *ngIf="
+          onBoardForm.get('motherName').hasError('required') &&
+          onBoardForm.get('motherName').touched
+        "
+      >
+        Mother name field is required
+      </span>
+    </div>
+    <div class="form-group row">
+      <label for="lastClassScore" class="col-md-2">
+        Last Class Score
+      </label>
+      <input
+        type="text"
+        class="col-md-4"
+        formControlName="lastClassScore"
+        placeholder="%(marks)"
+      />
+      <span
+        class="alert alert-danger"
+        *ngIf="
+          onBoardForm.get('lastClassScore').hasError('required') &&
+          onBoardForm.get('lastClassScore').touched
+        "
+      >
+        Last class score field is required
+      </span>
+    </div>
+    <button
+      class="col-md-offset-3 btn btn-primary"
+      type="submit"
+      [disabled]="!onBoardForm.valid"
+    >
+      OnBoard
+    </button>
+  </form>
+</div>

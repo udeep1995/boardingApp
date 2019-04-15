@@ -1,0 +1,16 @@
+<div class="container">
+  <app-student-list-filter
+    (filterStudent)="filterListByStudent($event)"
+    (filterCategory)="filterListByCategory($event)"
+  ></app-student-list-filter>
+  <div *ngFor="let item of list">
+    <app-student-list-item
+      class="col-md-6"
+      [id]="item.id"
+      [name]="item.name"
+      [category]="item.category"
+      (deleteStudentRecord)="onDeleteStudentRecord($event)"
+    >
+    </app-student-list-item>
+  </div>
+</div>

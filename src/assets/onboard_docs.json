@@ -1,0 +1,68 @@
+{
+  "domestic": [
+    {
+      "id": 1,
+      "docName": "Domicile Certificate",
+      "isMandatory": true
+    },
+    {
+      "id": 2,
+      "docName": "Birth Certificate",
+      "isMandatory": true
+    },
+    {
+      "id": 3,
+      "docName": "Previous marksheets",
+      "isMandatory": true
+    },
+
+    {
+      "id": 4,
+      "docName": "Police clearance",
+      "isMandatory": false
+    },
+    {
+      "id": 5,
+      "docName": "Passport",
+      "isMandatory": false
+    },
+    {
+      "id": 6,
+      "docName": "Signed Declaration",
+      "isMandatory": true
+    }
+  ],
+  "international": [
+    {
+      "id": 1,
+      "docName": "Domicile Certificate",
+      "isMandatory": true
+    },
+    {
+      "id": 2,
+      "docName": "Birth Certificate",
+      "isMandatory": true
+    },
+    {
+      "id": 3,
+      "docName": "Previous marksheets",
+      "isMandatory": true
+    },
+
+    {
+      "id": 4,
+      "docName": "Police clearance",
+      "isMandatory": true
+    },
+    {
+      "id": 5,
+      "docName": "Passport",
+      "isMandatory": true
+    },
+    {
+      "id": 6,
+      "docName": "Signed Declaration",
+      "isMandatory": true
+    }
+  ]
+}
