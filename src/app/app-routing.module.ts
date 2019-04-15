@@ -10,8 +10,9 @@ const routes: Routes = [
     loadChildren: "./authentication/authentication.module#AuthenticationModule"
   },
   {
-    path: "student",
-    loadChildren: "./student/student.module#StudentModule"
+    path: "student/list",
+    component: StudentListComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "onboard/form",

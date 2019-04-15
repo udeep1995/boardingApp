@@ -34,7 +34,7 @@ export class OnBoardFormComponent implements OnInit {
 
   ngOnInit() {
     const path = this.route.snapshot.routeConfig.path.split("/");
-    console.log(path);
+
     if (path[1] !== null && path[1] === "view") {
       const id: string = this.route.snapshot.params.id;
       const student: OnBoardFormModel = this.board.getStudentFromListById(
