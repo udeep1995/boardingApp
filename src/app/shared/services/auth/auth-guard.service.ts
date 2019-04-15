@@ -6,6 +6,10 @@ import { CanActivate, Router } from "@angular/router";
 })
 export class AuthGuardService implements CanActivate {
   constructor(public auth: AuthService, public router: Router) {}
+
+  /**
+   * returns true if user is authenticated otherwise false
+   */
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(["login"]);
@@ -13,6 +17,9 @@ export class AuthGuardService implements CanActivate {
     }
     return true;
   }
+  /**
+   * returns admin name from token stored in local storage
+   */
   getAdmin(): string {
     return this.auth.getToken().adminName;
   }

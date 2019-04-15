@@ -14,10 +14,18 @@ export class StudentListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  /**
+   * function to toggle modal
+   */
   toggleModal() {
     this.isModalOpen = !this.isModalOpen;
   }
 
+  /**
+   * emits functions to delete student with student id
+   * @param cardId - student id
+   */
   deleteCard(cardId: string) {
     this.deleteStudentRecord.emit(cardId);
   }

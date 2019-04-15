@@ -33,8 +33,10 @@ export class LoginFormComponent implements OnInit {
       this.router.navigateByUrl("onboard/form");
     }
   }
+  /**
+   * checks for valid admins and create new token on local storage
+   */
   onSubmit() {
-    console.log(this.username, this.password);
     let currAdmin = null;
     this.admins.forEach(admin => {
       if (

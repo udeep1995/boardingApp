@@ -14,10 +14,19 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     this.list = this.board.getOnBoardList();
   }
+  /**
+   * delets student from list
+   * @param id - student id to delete
+   */
   onDeleteStudentRecord(id: string) {
     this.board.deleteFromBoardList(parseInt(id));
     this.list = this.board.getOnBoardList();
   }
+
+  /**
+   * filter function for filtering list by student name
+   * @param studentName - student name
+   */
   filterListByStudent(studentName: string) {
     this.list = this.board.getOnBoardList() ? this.board.getOnBoardList() : [];
     if (studentName.length === 0) {
@@ -35,6 +44,10 @@ export class StudentListComponent implements OnInit {
     }
     this.list = filteredList;
   }
+  /**
+   * filter function to filter list by category
+   * @param category - category of student
+   */
   filterListByCategory(category: string) {
     let filteredList: OnBoardFormModel[] = [];
     this.list = this.board.getOnBoardList() ? this.board.getOnBoardList() : [];

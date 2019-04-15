@@ -21,8 +21,8 @@ export class OnBoardFormComponent implements OnInit {
     motherName: new FormControl("", [Validators.required]),
     dob: new FormControl("", [Validators.required]),
     lastClassScore: new FormControl("", [
-      Validators.required
-      // Validators.pattern(/^\d{2}\.\d{2}$/)
+      Validators.required,
+      Validators.pattern("^[0-9][0-9][.][0-9][0-9]$")
     ])
   });
 
@@ -34,15 +34,15 @@ export class OnBoardFormComponent implements OnInit {
 
   ngOnInit() {
     const path = this.route.snapshot.routeConfig.path.split("/");
-
-    if (path[1] !== null && path[1] === "view") {
+    const routePath = path[0];
+    if (routePath !== null && routePath === "view") {
       const id: string = this.route.snapshot.params.id;
       const student: OnBoardFormModel = this.board.getStudentFromListById(
         parseInt(id)
       );
       student.id = parseInt(id);
       this.viewStudentForm(student);
-    } else if (path[1] !== null && path[1] === "edit") {
+    } else if (routePath !== null && routePath === "edit") {
       const id: string = this.route.snapshot.params.id;
       const student: OnBoardFormModel = this.board.getStudentFromListById(
         parseInt(id)
@@ -52,7 +52,10 @@ export class OnBoardFormComponent implements OnInit {
     }
     this.formControlsValueChanges();
   }
-
+  /**
+   * fills up on boarding form from student parameter
+   * @param student - student whose values need to be prefilled
+   */
   private fillUpOnBoardForm(student: OnBoardFormModel) {
     const docsKeys = Object.keys(student.docs);
     this.formModel = {
@@ -76,6 +79,10 @@ export class OnBoardFormComponent implements OnInit {
     this.getDocuments();
   }
 
+  /**
+   * views student on boarding data on form and disable inputs
+   * @param student - student data
+   */
   viewStudentForm(student: OnBoardFormModel) {
     this.fillUpOnBoardForm(student);
     this.onBoardForm.get("name").disable();
@@ -87,6 +94,10 @@ export class OnBoardFormComponent implements OnInit {
     this.onBoardForm.get("docs").disable();
   }
 
+  /**
+   * views student on boarding data on form and disable inputs
+   * @param student - student data
+   */
   editStudentForm(student: OnBoardFormModel) {
     this.fillUpOnBoardForm(student);
   }
@@ -105,6 +116,9 @@ export class OnBoardFormComponent implements OnInit {
     });
   }
 
+  /**
+   * on boarding form submit
+   */
   onSubmit() {
     this.board.saveToBoardList(this.formModel);
     this.formModel = new OnBoardFormModel();
@@ -113,6 +127,9 @@ export class OnBoardFormComponent implements OnInit {
     this.router.navigateByUrl("onboard/form");
   }
 
+  /**
+   * get documents from json
+   */
   getDocuments() {
     this.board.getDocuments().subscribe(docs => {
       const allKeys = Object.keys(docs);
@@ -125,10 +142,17 @@ export class OnBoardFormComponent implements OnInit {
     });
   }
 
+  /**
+   * returns docs form control in onboardform controls
+   */
   get docsControls() {
     const docs = this.onBoardForm.get("docs") as FormGroup;
     return docs.controls;
   }
+
+  /**
+   * trigger whenever there is change in value of any form control in onboardform
+   */
   formControlsValueChanges() {
     this.onBoardForm.get("name").valueChanges.subscribe((value: string) => {
       this.formModel.name = value;

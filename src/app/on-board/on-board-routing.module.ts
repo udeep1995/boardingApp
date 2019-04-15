@@ -4,14 +4,24 @@ import { AuthGuardService } from "../shared/services/auth/auth-guard.service";
 import { OnBoardFormComponent } from "./on-board-form/on-board-form.component";
 const routes: Routes = [
   {
-    path: "onboard/edit/:id",
+    path: "form",
     component: OnBoardFormComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: "onboard/view/:id",
+    path: "edit/:id",
     component: OnBoardFormComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: "view/:id",
+    component: OnBoardFormComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "",
+    redirectTo: "form",
+    pathMatch: "full"
   }
 ];
 

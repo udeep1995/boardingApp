@@ -20,6 +20,9 @@ export class StudentListFilterComponent implements OnInit {
     this.filterForm.get("category").setValue(this.categories[0]);
     this.formControlValueChanges();
   }
+  /**
+   * triggers whenever value changes in form
+   */
   formControlValueChanges() {
     this.filterForm.get("category").valueChanges.subscribe(value => {
       this.filterCategory.emit(value);
