@@ -1,0 +1,17 @@
+.btn-cust {
+  margin: 10px 30% 0px 30%;
+}
+.btn.btn-primary {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin: 0px 1px;
+  width: 49%;
+  height: 55px;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0;
+}

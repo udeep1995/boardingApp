@@ -56,3 +56,11 @@
   padding: 5px 20px;
   margin: 0% 2%;
 }
+.btn.btn-primary,
+.btn.btn-success,
+.btn.btn-danger,
+.btn.btn-secondary {
+  margin: 5px;
+  padding: 5px;
+  width: 25%;
+}

@@ -1,4 +1,4 @@
-<form class="row" [formGroup]="filterForm">
+<form class="row" [formGroup]="filterForm" style="margin-top:30px">
   <div class="col-md-6">
     <select class="form-control" formControlName="category">
       <option *ngFor="let c of categories" value="{{ c }}">{{ c }}</option>
