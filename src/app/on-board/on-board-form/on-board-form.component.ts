@@ -1,9 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  AbstractControl
+} from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentModel } from "src/app/models/document.model";
 import { OnBoardFormModel } from "src/app/models/on-board-form.model";
 import { OnBoardingService } from "../../shared/services/onboard/on-boarding.service";
+
 @Component({
   selector: "app-on-board-form",
   templateUrl: "./on-board-form.component.html",
@@ -19,7 +25,10 @@ export class OnBoardFormComponent implements OnInit {
     docs: new FormGroup({}),
     fatherName: new FormControl("", [Validators.required]),
     motherName: new FormControl("", [Validators.required]),
-    dob: new FormControl("", [Validators.required]),
+    dob: new FormControl("", [
+      Validators.required,
+      OnBoardFormComponent.customDobValidation
+    ]),
     lastClassScore: new FormControl("", [
       Validators.required,
       Validators.pattern("^[0-9][0-9][.][0-9][0-9]$")
@@ -148,6 +157,21 @@ export class OnBoardFormComponent implements OnInit {
   get docsControls() {
     const docs = this.onBoardForm.get("docs") as FormGroup;
     return docs.controls;
+  }
+
+  /**
+   * custom date of birth validator function
+   */
+  private static customDobValidation(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const currDate = new Date();
+    if (control.value !== undefined && control.value != null) {
+      const inpDate = new Date(control.value.toString());
+      if (currDate.getTime() - inpDate.getTime() <= 0)
+        return { dobError: true };
+    }
+    return null;
   }
 
   /**

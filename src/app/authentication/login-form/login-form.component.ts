@@ -24,8 +24,8 @@ export class LoginFormComponent implements OnInit {
     },
     {
       adminId: 3,
-      adminName: "udeep",
-      password: "password"
+      adminName: "admin",
+      password: "admin"
     }
   ];
   ngOnInit() {

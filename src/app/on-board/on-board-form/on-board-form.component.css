@@ -2,4 +2,9 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 20px 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.alert.alert-danger {
+  padding: 7px;
 }

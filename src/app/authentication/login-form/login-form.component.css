@@ -4,3 +4,6 @@
   border-radius: 10px;
   margin-top: 100px;
 }
+.alert.alert-danger {
+  padding: 7px;
+}
