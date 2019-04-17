@@ -33,6 +33,16 @@
         Minimun length required is =
         {{ onBoardForm.get("name").errors.minlength.requiredLength }}
       </span>
+      <span
+        class="alert alert-danger col-md-offset-1"
+        *ngIf="
+          onBoardForm.get('name').hasError('pattern') &&
+          onBoardForm.get('name').touched &&
+          !onBoardForm.get('name').hasError('minlength')
+        "
+      >
+        Only alphabets are allowed
+      </span>
     </div>
 
     <div class="form-group row">
@@ -113,6 +123,15 @@
       >
         Father name field is required
       </span>
+      <span
+        class="alert alert-danger col-md-offset-1"
+        *ngIf="
+          onBoardForm.get('fatherName').hasError('pattern') &&
+          onBoardForm.get('fatherName').touched
+        "
+      >
+        Only alphabets are allowed
+      </span>
     </div>
     <div class="form-group row">
       <label for="motherName" class="col-md-2">
@@ -132,6 +151,15 @@
         "
       >
         Mother name field is required
+      </span>
+      <span
+        class="alert alert-danger col-md-offset-1"
+        *ngIf="
+          onBoardForm.get('motherName').hasError('pattern') &&
+          onBoardForm.get('motherName').touched
+        "
+      >
+        Only alphabets are allowed
       </span>
     </div>
     <div class="form-group row">

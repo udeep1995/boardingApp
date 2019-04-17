@@ -20,11 +20,21 @@ export class OnBoardFormComponent implements OnInit {
   documents: DocumentModel[] = [];
   formModel: OnBoardFormModel = new OnBoardFormModel();
   onBoardForm = new FormGroup({
-    name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+    name: new FormControl("", [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.pattern("[a-zA-Z][a-zA-Z ]*")
+    ]),
     category: new FormControl("", [Validators.required]),
     docs: new FormGroup({}),
-    fatherName: new FormControl("", [Validators.required]),
-    motherName: new FormControl("", [Validators.required]),
+    fatherName: new FormControl("", [
+      Validators.required,
+      Validators.pattern("[a-zA-Z][a-zA-Z ]*")
+    ]),
+    motherName: new FormControl("", [
+      Validators.required,
+      Validators.pattern("[a-zA-Z][a-zA-Z ]*")
+    ]),
     dob: new FormControl("", [
       Validators.required,
       OnBoardFormComponent.customDobValidation
